@@ -89,5 +89,6 @@ char			*ft_itoa_base(int n, char *str, int base);
 int				ft_countdigits(int n);
 int				ft_islower(int c);
 int				ft_isupper(int c);
+int				ft_error(void);
 
 #endif

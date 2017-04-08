@@ -1,36 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etregoni <etregoni@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/22 17:48:13 by etregoni          #+#    #+#             */
-/*   Updated: 2017/03/22 17:48:20 by etregoni         ###   ########.fr       */
+/*   Created: 2017/03/22 19:21:46 by etregoni          #+#    #+#             */
+/*   Updated: 2017/03/22 19:21:49 by etregoni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
+// void validate_v(char *piece)
+// }
+//   int adj;
+//
+//   adj = 0;
+// }
 
-int     main(int argc, char **argv)
+void validate_h(char *piece)
 {
-  int fd;
-  char *fillit;
-  char *piece;
+  int adj;
 
-  fillit = argv[1];
-  piece = ft_memalloc(21);
-  if (argc != 2)
-  {
-      ft_putstr("usage: ./fillit text_file\n");
-      exit (1);
-      return (1);
-  }
-  num_pieces(fillit);
-  printf("number of pieces is: %d\n", num_pieces(fillit));
+  adj = 0;
+  write (1, piece, 21);
+}
+
+int     num_pieces(char *fillit)
+{
+  char *piece;
+  int bsize;
+  int fd;
+
+  piece = ft_memalloc(546);
+  bsize = 0;
   fd = open(fillit, O_RDONLY);
-  while (read(fd, piece, 21))
-    validate_h(piece);
-  return (0);
+  while (read(fd, piece, 1))
+    if (*piece == '.' || *piece == '#' || *piece == '\n')
+      bsize++;
+  if (bsize > 545)
+    ft_error();
+  close (fd);
+  return (bsize / 21 + 1);
 }

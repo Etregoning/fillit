@@ -15,4 +15,7 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 
+int   num_pieces(char *fillit);
+void  validate_h(char *piece);
+
 #endif

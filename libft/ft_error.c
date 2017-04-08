@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: etregoni <etregoni@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,27 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fillit.h"
-#include <stdio.h>
+#include "libft.h"
 
-int     main(int argc, char **argv)
+int  ft_error(void)
 {
-  int fd;
-  char *fillit;
-  char *piece;
-
-  fillit = argv[1];
-  piece = ft_memalloc(21);
-  if (argc != 2)
-  {
-      ft_putstr("usage: ./fillit text_file\n");
-      exit (1);
-      return (1);
-  }
-  num_pieces(fillit);
-  printf("number of pieces is: %d\n", num_pieces(fillit));
-  fd = open(fillit, O_RDONLY);
-  while (read(fd, piece, 21))
-    validate_h(piece);
-  return (0);
+  ft_putstr("Error.\n");
+  exit (1);
+  return (1);
 }
