@@ -55,8 +55,8 @@ lib:
 	ar rc $(LIB) $(LIBOBJ)
 	ranlib $(LIB)
 
-debug: $(LIBOBJ) $(SRCOBJ) lib
-	$(CC) $(CFLAGS) -g $(SRCOBJ) -L. -lft -o fillit
+debug:
+	$(CC) $(CFLAGS) $(addprefix libft/, $(LIBLIST)) $(addprefix src/, $(SRCLIST)) -g -o fillit
 
 $(NAME): $(LIBOBJ) $(SRCOBJ) lib
 	$(CC) $(CFLAGS) $(SRCOBJ) -L. -lft -o fillit
