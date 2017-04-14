@@ -17,7 +17,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = /bin/rm -rf
 
-SRC = main.c validation.c
+SRC = main.c
 LIBSRC = ft_putchar.c ft_putstr.c ft_strlen.c ft_strdup.c ft_strcpy.c ft_putnbr.c \
 	ft_strcmp.c ft_strncmp.c ft_strcat.c ft_strncat.c ft_strlcat.c ft_isalnum.c \
 	ft_isalpha.c ft_isdigit.c ft_isprint.c ft_isascii.c ft_toupper.c ft_tolower.c \

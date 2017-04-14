@@ -22,9 +22,42 @@
 void validate_h(char *piece)
 {
   int adj;
+  int count;
 
   adj = 0;
-  write (1, piece, 21);
+  count = 0;
+  while (count++ < 20)
+  {
+    if (*piece == '#')
+    {
+      printf(GREEN "X" RESET);
+      piece++;
+      if (*piece == '#')
+      {
+        printf(GREEN "X" RESET);
+        adj++;
+      }
+      if (adj == 3)
+        while (count++ < 20)
+        {
+          if (*piece == '#')
+            ft_error();
+          else
+            printf(RED "_" RESET);
+          piece++;
+        }
+    }
+    else if (*piece == '.')
+    {
+        printf(RED "_" RESET);
+        piece++;
+    }
+    else if (*piece == '\n')
+      {
+        printf("\n");
+        piece++;
+      }
+  }
 }
 
 int     num_pieces(char *fillit)
