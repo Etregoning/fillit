@@ -16,6 +16,6 @@
 # include <fcntl.h>
 
 int   num_pieces(char *fillit);
-void  validate_h(char *piece);
+void  validation(char *piece);
 
 #endif
