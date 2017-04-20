@@ -31,7 +31,7 @@ SRCLIST  :=  $(shell ls -1 src | grep .c$$)
 SRCOBJ   :=  $(SRCLIST:.c=.o)
 SRCOBJ   :=  $(addprefix src/, $(SRCOBJ))
 
-.PHONY: clean fclean re
+.PHONY: all
 
 all: $(NAME)
 
@@ -41,15 +41,15 @@ libft/%.o: libft/%.c
 src/%.o: src/%.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-lib:
+$(LIB):
 	ar rc $(LIB) $(LIBOBJ)
 	ranlib $(LIB)
 
 debug:
 	$(CC) $(CFLAGS) $(addprefix libft/, $(LIBLIST)) $(addprefix src/, $(SRCLIST)) -g -o fillit
 
-$(NAME): $(LIBOBJ) $(SRCOBJ) lib
-	$(CC) $(CFLAGS) $(SRCOBJ) -L. -lft -o fillit
+$(NAME): $(LIBOBJ) $(SRCOBJ) $(LIB)
+	$(CC) $(CFLAGS) $(SRCOBJ) -L. -lft -o $(NAME)
 
 clean:
 	$(RM) $(SRCOBJ)

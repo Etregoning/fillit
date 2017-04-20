@@ -37,7 +37,7 @@ int		solver(int *index)
 
 int		*validation(char *src)
 {
-	int   len;
+	int		len;
 	int		lines;
 	int		blocks;
 	char	**table;
@@ -106,7 +106,11 @@ int		main(int ac, char *av[])
 		return (1);
 	}
 	if (open_file(av[1]))
-		ft_error();
+	{
+		ft_putstr("error\n");
+		exit(1);
+		return (1);
+	}
 	exit(0);
 	return (0);
 }
