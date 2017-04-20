@@ -85,7 +85,7 @@ int		open_file(char *file)
 	if (read(fd, src, 545) == -1 || read(fd, src, 1) != 0)
 		return (close_delete(3, fd, src));
 	close(fd);
-	if (!(piece = validation(src)))
+	if (!(board = validation(src)))
 		return (close_delete(2, fd, src));
 	ft_strdel(&src);
 	if (solver(board))

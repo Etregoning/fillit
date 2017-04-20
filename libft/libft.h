@@ -32,6 +32,7 @@ char			*ft_strnew(size_t size);
 void			ft_strdel(char **as);
 int				ft_strequ(const char *s1, const char *s2);
 void			ft_putendl(const char *s);
+void      *ft_memset(void *s, int c, size_t n);
 int				ft_error(void);
 
 #endif

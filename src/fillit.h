@@ -16,7 +16,7 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 
-void	puttbl(char **tbl)
+void	puttbl(char **tbl);
 void	tbldel(char **tbl);
 char	**tblnew(int len, int str_len);
 int		tbl_trim(char **src_tbl);
@@ -29,5 +29,7 @@ char	**create_board(int size, int str_size);
 char	**create_tet(int *index);
 int		recursor(char **board, char **tet, int row, int col);
 void	cleanup_board(char **board);
+char	**convert_array(char **tet);
+int		*nbr_str_new(int size, int stop);
 
 #endif
