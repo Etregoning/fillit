@@ -17,7 +17,7 @@ char	**create_compare(void)
 {
 	char	**ret;
 
-	if (!(ret = ft_tblnew(19, 13)))
+	if (!(ret = tblnew(19, 13)))
 		return (0);
 	ret[0] = "####";
 	ret[1] = "#...#...#...#";
@@ -41,7 +41,7 @@ char	**create_compare(void)
 	return (ret);
 }
 
-int		*validate3(char **src_tbl)
+int		*validate_pattern(char **src_tbl)
 {
 	int		*ret;
 	char	**compare;
@@ -82,33 +82,33 @@ int		check(int *a, int *b)
 	}
 }
 
-int		validate2(char *src, int *blck_cnt)
+int		validate_count(char *src, int *blck_cnt)
 {
 	int		i;
-	int		dot_cnt;
-	int		line_cnt;
+	int		dots;
+	int		lines;
 
 	i = 0;
-	dot_cnt = 0;
-	line_cnt = 0;
+	dots = 0;
+	lines = 0;
 	if (src[i] == '\n')
 		return (1);
 	while (src[i])
 	{
 		if (src[i] == '.' || src[i] == '#')
-			dot_cnt++;
+			dots++;
 		if (src[i] == '\n' && (src[i - 1] == '.' || src[i - 1] == '#'))
-			if (check(&dot_cnt, &line_cnt))
+			if (check(&dots, &lines))
 				return (1);
 		if (src[i] == '\n' && (src[i + 1] == '\n' || src[i + 1] == '\0'))
-			if (check(&line_cnt, blck_cnt))
+			if (check(&lines, blck_cnt))
 				return (1);
 		i++;
 	}
 	return (0);
 }
 
-void	validate1(char *src, int *src_len, int *line_cnt)
+void	valid_char(char *src, int *src_len, int *lines)
 {
 	int		i;
 
@@ -121,7 +121,7 @@ void	validate1(char *src, int *src_len, int *line_cnt)
 			return ;
 		}
 		if (*src == '\n')
-			(*line_cnt)++;
+			(*lines)++;
 		src++;
 		(*src_len)++;
 	}

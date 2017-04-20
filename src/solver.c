@@ -82,19 +82,19 @@ int		check_tet(char **board, char *tet, int row, int col)
 	return (1);
 }
 
-int		recursor(char **board, char **tetarray, int row, int col)
+int		recursor(char **board, char **tet, int row, int col)
 {
-	if (!*tetarray)
+	if (!*tet)
 		return (0);
 	while (board[row])
 	{
 		while (board[row][col])
 		{
-			if (check_tet(board, *tetarray, row, col))
+			if (check_tet(board, *tet, row, col))
 			{
-				write_tet(board, *tetarray, row, col);
-				if (recursor(board, (1 + tetarray), 0, 0))
-					remove_tet(board, *tetarray);
+				write_tet(board, *tet, row, col);
+				if (recursor(board, (1 + tet), 0, 0))
+					remove_tet(board, *tet);
 				else
 					return (0);
 			}

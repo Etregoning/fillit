@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "fillit.h"
 
-char	**ft_tblnew(int len, int str_len)
+char	**tblnew(int len, int str_len)
 {
 	int		i;
 	char	**new;
@@ -23,7 +23,7 @@ char	**ft_tblnew(int len, int str_len)
 	{
 		if (!(new[i] = ft_strnew(str_len)))
 		{
-			ft_tbldel(new);
+			tbldel(new);
 			return (0);
 		}
 		i++;
@@ -32,7 +32,7 @@ char	**ft_tblnew(int len, int str_len)
 	return (new);
 }
 
-void	ft_puttbl(char **tbl)
+void	puttbl(char **tbl)
 {
 	size_t	i;
 
@@ -44,7 +44,7 @@ void	ft_puttbl(char **tbl)
 	}
 }
 
-void	ft_tbldel(char **tbl)
+void	tbldel(char **tbl)
 {
 	size_t	i;
 

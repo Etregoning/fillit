@@ -17,7 +17,9 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = /bin/rm -rf
 
-SRC = main.c validation.c
+SRC = main.c validation.c create_piece.c game_board.c solver.c tables.c \
+	trimmer.c
+	
 LIBSRC = ft_putchar.c ft_putstr.c ft_strcpy.c ft_strnew.c ft_strdel.c \
 	ft_strequ.c ft_putendl.c ft_error.c
 

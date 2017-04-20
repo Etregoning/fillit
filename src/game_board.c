@@ -29,14 +29,14 @@ char	**finish_board(char **board, int size, int str_size, int i)
 	return (board);
 }
 
-char	**build_board(int size, int str_size)
+char	**create_board(int size, int str_size)
 {
 	char	**board;
 	int		i;
 	int		j;
 
 	i = 0;
-	if (!(board = ft_tblnew(size + 3, str_size + 3)))
+	if (!(board = tblnew(size + 3, str_size + 3)))
 		return (0);
 	while (i < size)
 	{
@@ -54,33 +54,33 @@ char	**build_board(int size, int str_size)
 	return (finish_board(board, size, str_size, i));
 }
 
-char	**convert_array(char **tetarray)
+char	**convert_array(char **tet)
 {
 	int		i;
 	int		j;
 
 	i = 0;
-	while (tetarray[i])
+	while (tet[i])
 	{
 		j = 0;
-		while (tetarray[i][j])
+		while (tet[i][j])
 		{
-			if (tetarray[i][j] == '#')
-				tetarray[i][j] = ('A' + i);
+			if (tet[i][j] == '#')
+				tet[i][j] = ('A' + i);
 			j++;
 		}
 		i++;
 	}
-	return (tetarray);
+	return (tet);
 }
 
-int		find_board_size(int *tetindex)
+int		board_size(int *index)
 {
 	int		i;
 	int		j;
 
 	i = 0;
-	while (tetindex[i] != 42)
+	while (index[i] != 42)
 		i++;
 	i = i * 4;
 	j = 2;

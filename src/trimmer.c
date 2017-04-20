@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-char	*dot_nl_trim2(char *new)
+char	*trim2(char *new)
 {
 	int		i;
 
@@ -28,7 +28,7 @@ char	*dot_nl_trim2(char *new)
 	return (new);
 }
 
-char	*dot_nl_trim(char *src)
+char	*trim(char *src)
 {
 	int		i;
 	int		j;
@@ -51,7 +51,7 @@ char	*dot_nl_trim(char *src)
 		}
 		j++;
 	}
-	return (dot_nl_trim2(new));
+	return (trim2(new));
 }
 
 int		tbl_trim(char **src_tbl)
@@ -62,7 +62,7 @@ int		tbl_trim(char **src_tbl)
 	i = 0;
 	while (src_tbl[i])
 	{
-		if (!(tmp = dot_nl_trim(src_tbl[i])))
+		if (!(tmp = trim(src_tbl[i])))
 			return (1);
 		if (tmp[0] == '\0')
 		{

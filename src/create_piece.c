@@ -63,27 +63,27 @@ char	*createtet2(int tet)
 		return (createtet3(tet, str));
 }
 
-char	**create_tet(int *tetindex)
+char	**create_tet(int *index)
 {
-	char	**tetarray;
+	char	**tet;
 	int		size;
 	int		i;
 
 	size = 0;
-	while (tetindex[size] != 42)
+	while (index[size] != 42)
 		size++;
-	if (!(tetarray = (char **)malloc(sizeof(char *) * (size + 1))))
+	if (!(tet = (char **)malloc(sizeof(char *) * (size + 1))))
 		return (0);
-	tetarray[size] = 0;
+	tet[size] = 0;
 	i = 0;
-	while (tetindex[i] != 42)
+	while (index[i] != 42)
 	{
-		if (!(tetarray[i] = createtet2(tetindex[i])))
+		if (!(tet[i] = createtet2(index[i])))
 		{
-			ft_tbldel(tetarray);
+			tbldel(tet);
 			return (0);
 		}
 		i++;
 	}
-	return (convert_array(tetarray));
+	return (convert_array(tet));
 }

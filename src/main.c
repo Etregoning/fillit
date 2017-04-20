@@ -11,28 +11,27 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
-int		solver(int *tetindex)
+int		solver(int *index)
 {
-	char	**tetarray;
+	char	**tet;
 	char	**board;
 	int		size;
 
-	size = find_board_size(tetindex);
-	if (!(board = build_board(size, size)))
+	size = board_size(index);
+	if (!(board = create_board(size, size)))
 		return (1);
-	if (!(tetarray = create_tet(tetindex)))
+	if (!(tet = create_tet(index)))
 		return (1);
-	while (recursor(board, tetarray, 0, 0))
+	while (recursor(board, tet, 0, 0))
 	{
 		++size;
-		ft_tbldel(board);
-		if (!(board = build_board(size, size)))
+		tbldel(board);
+		if (!(board = create_board(size, size)))
 			return (1);
 	}
 	cleanup_board(board);
-	ft_puttbl(board);
+	puttbl(board);
 	return (0);
 }
 
@@ -40,28 +39,28 @@ int		*validation(char *src)
 {
 	int   len;
 	int		lines;
-	int		blck_cnt;
-	char	**src_tbl;
-	int		*tetri;
+	int		blocks;
+	char	**table;
+	int		*piece;
 
 	len = 0;
 	lines = 0;
-	blck_cnt = 0;
-	validate1(src, &len, &lines);
+	blocks = 0;
+	valid_char(src, &len, &lines);
 	if (len < 20 || lines > 129)
 		return (0);
-	if (validate2(src, &blck_cnt) || blck_cnt > 26)
+	if (validate_count(src, &blocks) || blocks > 26)
 		return (0);
-	if (!(src_tbl = ft_tblnew(blck_cnt, 20)))
+	if (!(table = tblnew(blocks, 20)))
 		return (0);
-	assign_tbl(src_tbl, src);
-	if (tbl_trim(src_tbl) || (!(tetri = validate3(src_tbl))))
+	assign_tbl(table, src);
+	if (tbl_trim(table) || (!(piece = validate_pattern(table))))
 	{
-		ft_tbldel(src_tbl);
+		tbldel(table);
 		return (0);
 	}
-	ft_tbldel(src_tbl);
-	return (tetri);
+	tbldel(table);
+	return (piece);
 }
 
 int		close_delete(int flag, int fd, char *board)
